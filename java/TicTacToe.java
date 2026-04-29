@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TicTacToeUC3 {
+public class TicTacToeUC4 {
 
     static Scanner scanner = new Scanner(System.in);
 
@@ -8,17 +8,29 @@ public class TicTacToeUC3 {
 
         System.out.println("=== TIC TAC TOE ===");
 
-        int slot = getUserSlotInput();
+        int slot = getSlotInput();
 
-        System.out.println("Player selected slot: " + slot);
+        int row = getRow(slot);
+        int col = getColumn(slot);
+
+        System.out.println("Slot Number : " + slot);
+        System.out.println("Row Index   : " + row);
+        System.out.println("Column Index: " + col);
     }
 
-    // Method to accept user slot input
-    public static int getUserSlotInput() {
-
+    // Read slot number from user
+    public static int getSlotInput() {
         System.out.print("Enter slot number (1-9): ");
-        int slot = scanner.nextInt();
+        return scanner.nextInt();
+    }
 
-        return slot;
+    // Convert slot to row index
+    public static int getRow(int slot) {
+        return (slot - 1) / 3;
+    }
+
+    // Convert slot to column index
+    public static int getColumn(int slot) {
+        return (slot - 1) % 3;
     }
 }
